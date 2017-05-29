@@ -6,7 +6,7 @@ use Composer\Command\BaseCommand;
 use Jderusse\Warmup\ClassmapReader\ChainReader;
 use Jderusse\Warmup\ClassmapReader\DirectoryReader;
 use Jderusse\Warmup\ClassmapReader\OptimizedReader;
-use Jderusse\Warmup\Compiler\PhpServerCompiler;
+use Jderusse\Warmup\Compiler\FpmCompiler;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -59,7 +59,7 @@ class WarmupCommand extends BaseCommand
                 )
             )
         );
-        $compiler = new PhpServerCompiler();
+        $compiler = new FpmCompiler();
         foreach ($reader->getClassmap() as $file) {
             try {
                 $compiler->compile($file);
