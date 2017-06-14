@@ -17,6 +17,10 @@ class PhpServerCompiler implements CompilerInterface
 
     public function __construct(array $portRange = [8000, 8999])
     {
+        if (!(bool) ini_get('opcache.enable_cli')) {
+            throw new \RuntimeException('You have to enable the opcache extension');
+        }
+
         $port = $this->findPort($portRange);
         $this->address = sprintf('127.0.0.1:%d', $port);
 
