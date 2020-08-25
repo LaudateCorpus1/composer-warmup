@@ -19,7 +19,7 @@ class WarmupCommand extends BaseCommand
             ->setName('warmup-opcode')
             ->setDescription('Warmup the application\'s OpCode')
             ->addArgument('extra', InputArgument::IS_ARRAY, 'add extra path to compile')
-            ->addArgument('port', null, 'FPM port number', 9000);
+            ->addOption('port', null, InputOption::VALUE_REQUIRED, '', 9000);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -57,7 +57,7 @@ class WarmupCommand extends BaseCommand
             )
         );
 
-        $port = $input->getArgument('port');
+        $port = $input->getOption('port');
         $compiler = new FpmCompiler($port);
         foreach ($reader->getClassmap() as $file) {
             try {

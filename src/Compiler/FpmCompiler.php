@@ -12,7 +12,7 @@ class FpmCompiler implements CompilerInterface
 {
     private $port;
 
-    public function __construct(int $port = 9000)
+    public function __construct($port = 9000)
     {
         $this->port = $port;
     }
