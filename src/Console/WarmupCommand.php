@@ -18,8 +18,8 @@ class WarmupCommand extends BaseCommand
         $this
             ->setName('warmup-opcode')
             ->setDescription('Warmup the application\'s OpCode')
-            ->addArgument('extra', InputArgument::IS_ARRAY, 'add extra path to compile')
-            ->addArgument('port', null, 'FPM port number', 9000);
+            ->addArgument('port', null, 'FPM port number', 9000)
+            ->addArgument('extra', InputArgument::IS_ARRAY, 'add extra path to compile');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
