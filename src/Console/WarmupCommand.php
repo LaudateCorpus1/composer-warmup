@@ -8,6 +8,7 @@ use Jderusse\Warmup\ClassmapReader\DirectoryReader;
 use Jderusse\Warmup\ClassmapReader\OptimizedReader;
 use Jderusse\Warmup\Compiler\FpmCompiler;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,7 +20,7 @@ class WarmupCommand extends BaseCommand
             ->setName('warmup-opcode')
             ->setDescription('Warmup the application\'s OpCode')
             ->addArgument('extra', InputArgument::IS_ARRAY, 'add extra path to compile')
-            ->addOption('port', null, null, 'FPM port number', 9000);
+            ->addOption('port', null, InputOption::VALUE_OPTIONAL, 'FPM port number', 9000);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
