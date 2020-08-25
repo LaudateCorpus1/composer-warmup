@@ -10,11 +10,18 @@ use Symfony\Component\Process\ProcessBuilder;
 
 class FpmCompiler implements CompilerInterface
 {
+    private $port;
+
+    public function __construct(int $port = 9000)
+    {
+        $this->port = $port;
+    }
+
     public function compile(string $file)
     {
         require_once __DIR__.'/../../../../autoload.php';
 
-        $fastcgi = new \Adoy\FastCGI\Client('127.0.0.1', '9000');
+        $fastcgi = new \Adoy\FastCGI\Client('127.0.0.1', $this->port);
 
         $fastcgi->request([
             'GATEWAY_INTERFACE' => 'FastCGI/1.0',
